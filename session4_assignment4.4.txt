@@ -1,0 +1,110 @@
+Write a program to demonstrate Constructor chaining in Java.
+6. Expected Output
+Access super class constructor through child class and display the relevant statements of both.
+
+
+package Area;
+
+public class area 
+{
+public static void main(String[] args)
+{
+//rectangle rect=new rectangle(5,7);
+//rect.area();
+
+//rectangle sq=new square(5);
+//sq.area();
+
+rectangle tr=new triangle(2);
+//triangle tr=new triangle(3,6);
+tr.area();
+}
+}
+
+
+class rectangle
+{
+	double length,breadth;
+	public rectangle()
+	{
+		System.out.println("Empty constructor of rectangle class");
+	}
+	
+	public rectangle(double l,double b)
+	{
+		this.length=l;
+		this.breadth=b;
+	}
+	
+	public rectangle(double l)
+	{
+		length=breadth=l;
+		System.out.println("Inside rectangle constructor:");
+		
+		System.out.println("sides are same so it is not a rectangle but a square");
+		
+	}
+	public void area()
+	{
+		System.out.println("Ärea of rectangle:" + length*breadth);
+	}
+}
+
+class square extends rectangle
+{
+	double a;
+	public square()
+	{
+		super();
+		System.out.println("Empty constructor of square:");
+	}
+	public square(double length,double breadth)
+	{
+		super(length,breadth);
+		length=breadth=a;
+	}
+	public square(double a)
+	{
+		super(a);
+		length=breadth=a;
+		System.out.println("Inside constructor of square:");
+	}
+	
+	public void area()
+	{
+		System.out.println("Area of square:" + (length*breadth));
+	}
+	}
+
+class triangle extends square
+{
+	double t;
+	public triangle()
+	{
+		super();
+		System.out.println("Empty constructor of triangle");
+	}
+	
+	public triangle(double t)
+	{
+		super(t);
+		a=t;
+		System.out.println("Inside constructor of triangle");
+		System.out.println("Right angled triangle");
+	}
+	
+	public triangle(double base,double height)
+			{
+		super(base,height);
+		System.out.println("Inside constructor of triangle with base and height");
+		this.length=base;
+		this.breadth=height;
+			}
+	
+	public void area()
+	{
+	
+		System.out.println("Area of triangle"+ length*breadth*0.5);
+	}
+}
+
